@@ -1,7 +1,7 @@
 import dbConnect from '@/lib/dbConnect';
 import UserModel from '@/models/User';
 import { usernameValidation } from '@/schemas/signUpSchema';
-import { success, z } from 'zod';
+import { z } from 'zod';
 
 const UsernameQuerySchema = z.object({
   username: usernameValidation,
@@ -31,7 +31,6 @@ export async function GET(request: Request) {
       );
     }
     const { username } = result.data;
-
     const exsitingVerifiedUser = await UserModel.findOne({
       username,
       isVerified: true,
