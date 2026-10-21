@@ -83,7 +83,7 @@ const SignUpForm = () => {
       ('There was a problem with your sign-up. Please try again.');
       toast.add({
         title: 'Signup failed',
-        description: 'error message',
+        description: errorMessage,
       });
       setIsSubmitting(false);
     }
