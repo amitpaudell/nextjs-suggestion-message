@@ -8,12 +8,13 @@ const Navbar = () => {
   const { data: session } = useSession();
   const user: User = session?.user;
   return (
-    <nav className="p-4 md:p-6 shadow-md bg-gray-900 text-white">
-      <a href="#" className="text-xl font-bold mb-4 md:mb-0">
+    <nav className="flex justify-around p-4 md:p-6 shadow-md bg-gray-900 text-white">
+      <Link href="/" className="text-xl font-bold mb-4 md:mb-0">
         True Feedback
-      </a>
+      </Link>
+
       {session ? (
-        <>
+        <div>
           <span className="mr-4">Welcome, {user.username || user.email}</span>
           <Button
             onClick={() => signOut()}
@@ -22,13 +23,18 @@ const Navbar = () => {
           >
             Logout
           </Button>
-        </>
+        </div>
       ) : (
-        <Link href="/sign-in">
-          <Button className="w-full md:w-auto bg-slate-100 text-black">
-            Login
-          </Button>
-        </Link>
+        <div>
+          <Link href="/sign-in">
+            <Button
+              variant="outline"
+              className="w-full md:w-auto bg-slate-100 text-black"
+            >
+              Login
+            </Button>
+          </Link>
+        </div>
       )}
     </nav>
   );

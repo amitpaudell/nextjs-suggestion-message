@@ -2,6 +2,9 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+body {
+  font-family: var(--font-roboto), sans-serif;
+}
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -126,5 +129,12 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }

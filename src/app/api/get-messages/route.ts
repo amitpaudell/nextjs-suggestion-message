@@ -1,5 +1,5 @@
 import dbConnect from '@/lib/dbConnect';
-import { getServerSession } from 'next-auth';
+import { getServerSession, User } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]/option';
 import mongoose from 'mongoose';
 import UserModel from '@/models/User';
@@ -7,7 +7,7 @@ import UserModel from '@/models/User';
 export async function GET(request: Request) {
   await dbConnect();
   const session = await getServerSession(authOptions);
-  const _user = session?.user;
+  const _user: User = session?.user;
 
   if (!session || !_user) {
     return Response.json(
@@ -15,6 +15,7 @@ export async function GET(request: Request) {
       { status: 401 },
     );
   }
+  const existingUser = await UserModel.findById(_user._id);
 
   const userId = new mongoose.Types.ObjectId(_user._id);
   try {

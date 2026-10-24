@@ -38,7 +38,7 @@ const SignUpForm = () => {
     defaultValues: {
       username: '',
       email: '',
-      password: ',',
+      password: '',
     },
   });
 

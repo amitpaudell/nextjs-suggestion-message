@@ -37,11 +37,11 @@ const DashboardPage = () => {
     setIsSwitchLoading(true);
     try {
       const response = await axios.get<ApiResponse>('/api/accept-message');
-      setValue('acceptingMessage', response.data.isAcceptingMessages ?? false);
+      setValue('acceptingMessage', response.data.isAcceptingMessage ?? false);
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
       toast.add({
-        title: 'Error',
+        title: 'Error1',
         description:
           axiosError.response?.data.message ??
           'Failed to fetch message settings',
@@ -67,7 +67,7 @@ const DashboardPage = () => {
       } catch (error) {
         const axiosError = error as AxiosError<ApiResponse>;
         toast.add({
-          title: 'Error',
+          title: 'Error2',
           description:
             axiosError.response?.data.message ?? 'Failed to fetch messages',
         });
@@ -97,7 +97,7 @@ const DashboardPage = () => {
     } catch (error) {
       const axiosError = error as AxiosError<ApiResponse>;
       toast.add({
-        title: 'Error',
+        title: 'Error3',
         description:
           axiosError.response?.data.message ??
           'Failed to update message settings',
